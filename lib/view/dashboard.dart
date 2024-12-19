@@ -117,6 +117,9 @@ class DashBoard extends GetView {
                 style: whiteFontStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ))),
       actions: [
+        IconButton(onPressed: (){
+         Get.toNamed(AppRoutes.searchScreen);
+        }, icon: const Icon(Icons.search)),
         Obx(()=> Get.find<UserController>().isLogout.value
             ? AppUi.showLoading()
         : IconButton(
@@ -127,6 +130,7 @@ class DashBoard extends GetView {
         ),),
 
       ],
+
     );
   }
 

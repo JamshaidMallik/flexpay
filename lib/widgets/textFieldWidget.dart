@@ -20,6 +20,7 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Function()? onTap;
   final bool? readOnly;
+  final Color? cursorColor;
 
   const CustomTextField({
     super.key,
@@ -40,7 +41,8 @@ class CustomTextField extends StatelessWidget {
     this.onSubmitted,
     this.validator,
     this.onTap,
-    this.readOnly
+    this.readOnly,
+    this.cursorColor,
   });
 
   @override
@@ -53,6 +55,7 @@ class CustomTextField extends StatelessWidget {
       style: textStyle ?? blackFontStyle(),
       onTap: onTap,
       readOnly: readOnly ?? false,
+      cursorColor: cursorColor ?? blackColor,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: hintStyle ?? greyFontStyle(),

@@ -1,6 +1,7 @@
 import 'package:flexpay/view/addUser.dart';
 import 'package:flexpay/view/dashboard.dart';
 import 'package:flexpay/view/login.dart';
+import 'package:flexpay/view/search.dart';
 import 'package:flexpay/view/splash.dart';
 import 'package:flexpay/view/userProfile.dart';
 import 'package:get/get.dart';
@@ -12,12 +13,14 @@ class AppRoutes {
   static const login = LoginScreen.routeName;
   static const addUser = AddUserScreen.routeName;
   static var userprofile = UserProfile.routeName;
+  static var searchScreen = SearchScreen.routeName;
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: home, page: () => const DashBoard()),
     GetPage(name: login, page: () => const LoginScreen()),
     GetPage(name: addUser, page: () => const AddUserScreen()),
-    GetPage(name: userprofile, page: () =>   const UserProfile(), transition: Transition.leftToRight),
+    GetPage(name: userprofile, page: () =>  const UserProfile(), transition: Transition.leftToRight),
+    GetPage(name: searchScreen, page: () =>  const SearchScreen()),
   ];
 }

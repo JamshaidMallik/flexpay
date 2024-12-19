@@ -13,8 +13,6 @@ class UserController extends GetxController {
  var isDelete = false.obs;
  final fullNameController = TextEditingController();
  final emailController = TextEditingController();
- // final joiningDateController = TextEditingController();
- // final feeUpdateDateController = TextEditingController();
  final addressController = TextEditingController();
  final ageController = TextEditingController();
  final feeController = TextEditingController();
@@ -115,7 +113,6 @@ class UserController extends GetxController {
    }
  }
  Future setUserUnPaid({required String userId, required RxBool isPaid}) async {
-   debugPrint('Setting user unpaid: ${isPaid.value}');
    try {
      isLoading.value = true;
      Map<String, dynamic> data = {
@@ -127,6 +124,22 @@ class UserController extends GetxController {
    } finally {
      isLoading.value = false;
    }
+ }
+ final searchController = TextEditingController();
+ var searchQuery = ''.obs;
+ List<UserModel> filterUsers(List<UserModel> users) {
+   if (searchQuery.value.isEmpty) {
+     return users;
+   }
+   return users.where((user) => user.fullName != null && user.fullName!.toLowerCase().contains(searchQuery.value.toLowerCase())).toList();
+ }
+
+ @override
+ void onInit() {
+   super.onInit();
+   searchController.addListener(() {
+     searchQuery.value = searchController.text.trim();
+   });
  }
 
  void editUser(UserModel user) {
