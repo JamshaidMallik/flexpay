@@ -1,6 +1,4 @@
 import 'package:flexpay/constant/constant.dart';
-import 'package:flexpay/routes/routes.dart';
-import 'package:flexpay/view/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
