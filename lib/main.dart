@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flexpay/firebase_options.dart';
 import 'package:flexpay/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +15,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   DependencyInjection.init();
+  await Firebase.initializeApp(
+    options: Platform.isAndroid ? DefaultFirebaseOptions.android : DefaultFirebaseOptions.ios,
+  );
   runApp(const MyApp());
 }
 

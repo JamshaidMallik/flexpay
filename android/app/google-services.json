@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "441436000833",
+    "project_id": "flexpay-9f501",
+    "storage_bucket": "flexpay-9f501.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441436000833:android:da943db8aa71db79d3ecc0",
+        "android_client_info": {
+          "package_name": "com.flexpay.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyhIE9D_BcWMC_IMxb8OS8tE2L-7TyYVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

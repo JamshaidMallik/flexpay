@@ -2,8 +2,10 @@ import 'package:flexpay/constant/constant.dart';
 import 'package:flexpay/widgets/buttonWidget.dart';
 import 'package:flexpay/widgets/textFieldWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flexpay/controller/authController.dart';
+import 'package:get/get.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends GetView<AuthController> {
   static const String routeName = '/LoginScreen';
   const LoginScreen({super.key});
 
@@ -53,12 +55,14 @@ class LoginScreen extends StatelessWidget {
                   ),
                   40.h,
                   CustomTextField(
+                    controller: controller.emailController,
                     hintText: 'Email',
                     keyboardType: TextInputType.emailAddress,
                     prefixIcon: Icon(Icons.email, color: blackColor),
                   ),
                   20.h,
                   CustomTextField(
+                    controller: controller.passwordController,
                     hintText: 'Password',
                     keyboardType: TextInputType.visiblePassword,
                     prefixIcon: Icon(Icons.password, color: blackColor),
@@ -66,13 +70,13 @@ class LoginScreen extends StatelessWidget {
                   40.h,
 
                   // Login Button
-                  CustomButton(
-                    color: primaryColor,
-                    text: 'Login',
-                    onPressed: () {
-
-                    },
-                  )
+                 Obx(()=> controller.isLoading.value ? const CircularProgressIndicator(color: Colors.white,): CustomButton(
+                   color: primaryColor,
+                   text: 'Login',
+                   onPressed: () {
+                     controller.login();
+                   },
+                 ))
                 ],
               ),
             ),
