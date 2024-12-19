@@ -18,6 +18,8 @@ class CustomTextField extends StatelessWidget {
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
   final String? Function(String?)? validator;
+  final Function()? onTap;
+  final bool? readOnly;
 
   const CustomTextField({
     super.key,
@@ -37,6 +39,8 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.onSubmitted,
     this.validator,
+    this.onTap,
+    this.readOnly
   });
 
   @override
@@ -47,6 +51,8 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText,
       maxLines: maxLines,
       style: textStyle ?? blackFontStyle(),
+      onTap: onTap,
+      readOnly: readOnly ?? false,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: hintStyle ?? greyFontStyle(),
@@ -75,6 +81,9 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChanged,
       onFieldSubmitted: onSubmitted,
       validator: validator,
+      onTapOutside: (value){
+        FocusScope.of(context).unfocus();
+      },
     );
   }
 }

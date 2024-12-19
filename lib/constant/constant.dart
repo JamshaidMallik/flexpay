@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,12 +13,17 @@ Color blackColor = Colors.black;
 Color appBgColor = whiteColor;
 Color textFieldBorderColor = Colors.blue;
 Color textFieldFillColor = whiteColor;
+Color circularProgressColor = whiteColor;
 
 List<Color> kGradientColors = [const Color(0xff05aff7), const Color(0xff08aaf4), const Color(0xff17d0e1), const Color(0xff19e0d1), const Color(0xff11f3ce)];
+final FirebaseFirestore fireStore = FirebaseFirestore.instance;
+final FirebaseAuth auth = FirebaseAuth.instance;
+String userCollectionName = 'users';
+
 
 double kAppPadding = 16.0;
 double kAppRadius = 8.0;
-double kAppBarFontSize = 14.0;
+double kAppBarFontSize = 18.0;
 double kAppFontSize = 14.0;
 double kAppHeadingFontSize = 16.0;
 

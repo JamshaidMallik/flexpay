@@ -68,9 +68,7 @@ class LoginScreen extends GetView<AuthController> {
                     prefixIcon: Icon(Icons.password, color: blackColor),
                   ),
                   40.h,
-
-                  // Login Button
-                 Obx(()=> controller.isLoading.value ? const CircularProgressIndicator(color: Colors.white,): CustomButton(
+                  Obx(()=> controller.isLoading.value ? const CircularProgressIndicator(color: Colors.white,): CustomButton(
                    color: primaryColor,
                    text: 'Login',
                    onPressed: () {

@@ -1,3 +1,4 @@
+import 'package:flexpay/constant/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -6,6 +7,10 @@ class AppUi {
    static nothing(){
     return const SizedBox.shrink();
    }
+
+  static showLoading() {
+       return CircularProgressIndicator(color: circularProgressColor,);
+    }
    static void showToast({
      required String message,
      Color backgroundColor = Colors.black,
@@ -24,7 +29,7 @@ class AppUi {
        fontSize: fontSize,
      );}
    static void cancelToast() {Fluttertoast.cancel();}
-   void showSnackBar({
+  static void showSnackBar({
      required String title,
      required String message,
      bool isError = true,
@@ -42,7 +47,7 @@ class AppUi {
        colorText: textColor,
        duration: duration,
        snackStyle: snackStyle,
-       icon: icon != null ? Icon(icon, color: textColor) : null,
+       icon: isError? Icon(Icons.warning_rounded, color: textColor) : Icon(Icons.check_circle_rounded, color: textColor),
      );
    }
 

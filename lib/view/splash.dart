@@ -1,7 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flexpay/constant/constant.dart';
+import 'package:flexpay/view/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'login.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,20 +14,30 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   double _opacity = 0.0;
 
   @override
   void initState() {
     super.initState();
+    _startAnimation();
+    _navigateBasedOnAuth();
+  }
+  void _startAnimation() {
     Future.delayed(const Duration(milliseconds: 500), () {
       setState(() {
         _opacity = 1.0;
       });
     });
-    Future.delayed(const Duration(seconds: 3), () {
-      Get.offAll(()=> const LoginScreen(),transition: Transition.fadeIn, duration: const Duration(milliseconds: 1000));
-      // Get.offAll(()=> const HomeScreen(),transition: Transition.fadeIn, duration: const Duration(milliseconds: 1000));
-    });
+  }
+
+  Future<void> _navigateBasedOnAuth() async {
+    await Future.delayed(const Duration(seconds: 3));
+    if (_auth.currentUser == null) {
+      Get.offAll(() => const LoginScreen(), transition: Transition.fadeIn, duration: const Duration(milliseconds: 1000));
+    } else {
+      Get.offAll(() => const DashBoard(), transition: Transition.fadeIn, duration: const Duration(milliseconds: 1000));
+    }
   }
 
   @override
@@ -56,6 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                 ),
+                10.h,
                 Text(
                   'Your Digital DataBook',
                   style: whiteFontStyle(

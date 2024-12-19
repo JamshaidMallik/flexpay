@@ -13,11 +13,11 @@ import 'dependency_injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await GetStorage.init();
-  DependencyInjection.init();
   await Firebase.initializeApp(
     options: Platform.isAndroid ? DefaultFirebaseOptions.android : DefaultFirebaseOptions.ios,
   );
+  await GetStorage.init();
+  DependencyInjection.init();
   runApp(const MyApp());
 }
 
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           defaultTransition: Transition.fadeIn,
-          transitionDuration: const Duration(milliseconds: 700),
+          transitionDuration: const Duration(milliseconds: 300),
           title: 'FlexPay',
           theme: ThemeData(
               colorScheme: ColorScheme(
@@ -53,9 +53,15 @@ class MyApp extends StatelessWidget {
               appBarTheme: AppBarTheme(
                   elevation: 0.0,
                   backgroundColor: Colors.white,
+                  iconTheme: const IconThemeData(
+                    color: Colors.white,
+                  ),
+                  actionsIconTheme: const IconThemeData(
+                    color: Colors.white,
+                  ),
                   scrolledUnderElevation: 0.0,
                   centerTitle: true,
-                  titleTextStyle: blackFontStyle(fontSize: kAppBarFontSize, fontWeight: FontWeight.w700)),
+                  titleTextStyle: whiteFontStyle(fontSize: kAppBarFontSize, fontWeight: FontWeight.bold)),
               scaffoldBackgroundColor: appBgColor,
               useMaterial3: true,
             ),
