@@ -2,6 +2,7 @@ import 'package:flexpay/constant/AppUi.dart';
 import 'package:flexpay/constant/constant.dart';
 import 'package:flexpay/controller/userController.dart';
 import 'package:flexpay/models/user_model.dart';
+import 'package:flexpay/routes/routes.dart';
 import 'package:flexpay/widgets/buttonWidget.dart';
 import 'package:flexpay/widgets/textFieldWidget.dart';
 import 'package:flutter/material.dart';
@@ -74,11 +75,19 @@ class SearchScreen extends GetView<UserController> {
               );
             }
 
-            return ListView.builder(
+            return ListView.separated(
               itemCount: users.length,
+              separatorBuilder: (context, index) => const Divider(color: Colors.white24),
               itemBuilder: (context, index) {
                 final user = users[index];
-                return _buildUserCard(user, controller, index);
+                return GestureDetector(
+                    onTap: (){
+                      Get.find<UserController>().setUserProfile = user;
+                      Get.toNamed(
+                        AppRoutes.userprofile,
+                      );
+                    },
+                    child: _buildUserCard(user, controller, index));
               },
             );
           });
