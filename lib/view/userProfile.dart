@@ -77,7 +77,7 @@ class UserProfile extends GetView<UserController> {
                 _buildInfoRow("Age", controller.userProfileModel.value!.age!.isNotEmpty? controller.userProfileModel.value!.age.toString(): "N/A"),
                  _buildInfoRow("Gender", controller.userProfileModel.value!.gender ?? "Not Available"),
                 _buildInfoRow("Joining Date", _formatDate(controller.userProfileModel.value!.joiningDate)),
-                _buildInfoRow("Last Fee Paid", _formatDate(controller.userProfileModel.value!.feeUpdateDate)),
+                _buildInfoRow("Next Fee Will be charge on", _formatDate(controller.userProfileModel.value!.feeUpdateDate)),
                 _buildInfoRow("Membership Fee", controller.userProfileModel.value!.membershipFee != null ? "Rs ${controller.userProfileModel.value!.membershipFee!.toStringAsFixed(2)}" : "N/A"),
                 _buildInfoRow("Active Member", controller.userProfileModel.value!.isActiveMember.value ? "Yes" : "No"),
                 20.h,
